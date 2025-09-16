@@ -9,6 +9,7 @@
                             <th scope="col" class="px-6 py-3">Nº</th>
                             <th scope="col" class="px-6 py-3">Username</th>
                             <th scope="col" class="px-6 py-3">email</th>
+                            <th scope="col" class="px-6 py-3">created_at</th>
                             <th scope="col" class="px-6 py-3">Action</th>
                         </tr>
                     </thead>
@@ -18,6 +19,7 @@
                                 <td class="px-6 py-4">{{ $index + 1 }}</td>
                                 <td class="px-6 py-4">{{ $user->name }}</td>
                                 <td class="px-6 py-4">{{ $user->email }}</td>
+                                <td class="px-6 py-4">{{ $user->created_at }}</td>
                                 <td class="px-6 py-4">
                                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                                         Edit
