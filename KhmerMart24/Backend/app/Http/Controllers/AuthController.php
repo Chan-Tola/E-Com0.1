@@ -2,11 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->only(User::EMAIL, User::PASSWORD);
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect('/');
+        }
+
+        return back()->withErrors(['email' => 'Invalid credentials']);
+    }
 
     public function showRegisterForm()
     {
@@ -28,6 +45,13 @@ class AuthController extends Controller
             User::PASSWORD => bcrypt($validated[User::PASSWORD]),
         ]);
 
+        Auth::login($user);
+        return redirect('/')->with('success', 'Account registered successfully!');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
         return redirect('/')->with('success', 'Account registered successfully!');
     }
 }

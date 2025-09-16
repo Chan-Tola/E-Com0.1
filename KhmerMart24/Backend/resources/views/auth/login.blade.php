@@ -1,7 +1,7 @@
 @extends('layout.index')
-@section('register_content')
+@section('login_content')
     <main class="h-[74%] flex justify-center items-center p-6">
-        <div class="h-[43rem] w-[28rem] rounded-2xl bg-white shadow-lg">
+        <div class="h-[32rem] w-[28rem] rounded-2xl bg-white shadow-lg">
             <div class="flex gap-2 p-4">
                 <span class="inline-block h-4 w-4 rounded-full bg-blue-500"></span>
                 <span class="inline-block h-4 w-4 rounded-full bg-purple-500"></span>
@@ -9,9 +9,9 @@
             </div>
             <div class="card__content p-6">
                 <h1 class="text-center text-[2.2em] font-bold text-blue-500">
-                    Regiester
+                    Login Form
                 </h1>
-                <form class="mx-auto max-w-md" action="{{ route('register.store') }}" method="POST">
+                <form class="mx-auto max-w-md" action="{{ route('login') }}" method="POST">
                     @csrf
                     @if ($errors->any())
                         <div class="mb-4 rounded-lg bg-red-50 p-4 text-red-800">
@@ -20,12 +20,6 @@
                             @endforeach
                         </div>
                     @endif
-                    <div class="mb-6">
-                        <label class="mb-2 block text-base font-medium text-gray-900">Username</label>
-                        <input type="text" name="{{ \App\Models\User::NAME }}" placeholder="Username"
-                            class="block w-full rounded-lg border border-gray-300 p-3 text-base" required />
-                    </div>
-
                     <div class="mb-6">
                         <label class="mb-2 block text-base font-medium text-gray-900">Email</label>
                         <input type="email" name="{{ \App\Models\User::EMAIL }}" placeholder="example@gmail.com"
@@ -37,27 +31,13 @@
                         <input type="password" name="{{ \App\Models\User::PASSWORD }}" placeholder="Password"
                             class="block w-full rounded-lg border border-gray-300 p-3 text-base" required />
                     </div>
-                    <div class="mb-6">
-                        <label class="mb-2 block text-base font-medium text-gray-900">Confirm Password</label>
-                        <input type="password" name="password_confirmation" placeholder="Confirm Password"
-                            class="block w-full rounded-lg border border-gray-300 p-3 text-base" required />
-                    </div>
-                    <div class="mb-6 flex items-start">
-                        <input id="terms" type="checkbox"
-                            class="h-5 w-5 rounded border border-gray-300 bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:focus:ring-blue-600"
-                            required />
-                        <label for="terms" class="ms-3 text-base font-medium text-gray-900 dark:text-gray-300">I
-                            agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms
-                                and
-                                conditions</a></label>
-                    </div>
                     <button type="submit"
                         class="w-full rounded-lg bg-blue-700 px-6 py-3 text-base font-semibold text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Register new account
+                        Login
                     </button>
                     <p class="text-center mt-4 text-gray-600">
-                        Already have an account?
-                        <a href="{{ route('login.form') }}" class="text-blue-500 hover:underline">Login</a>
+                        Don't have an account?
+                        <a href="{{ route('register.form') }}" class="text-blue-500 hover:underline">Register</a>
                     </p>
                 </form>
             </div>

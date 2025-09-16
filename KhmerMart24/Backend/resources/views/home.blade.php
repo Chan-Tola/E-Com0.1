@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KhmerMart24</title>
-    @vite('resources/css/app.css')
-</head>
-
-<body class="h-screen">
-    <nav>
-        @include('partials.navbar')
-    </nav>
+@extends('layout.index')
+@section('home_content')
     <main class="flex items-center h-[74%] justify-center p-6">
         <section class="bg-white p-10 rounded-2xl shadow-xl text-center max-w-xl">
             <h1 class="text-5xl font-extrabold text-blue-600 mb-6">Welcome Home</h1>
@@ -33,9 +21,4 @@
             </a>
         </section>
     </main>
-    <footer>
-        @include('partials.footer')
-    </footer>
-</body>
-
-</html>
+@endsection

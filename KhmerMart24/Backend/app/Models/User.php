@@ -11,7 +11,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    // Table name
+    // Table name 
     const TABLENAME = 'users';
 
     // Column names
