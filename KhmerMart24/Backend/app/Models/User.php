@@ -11,37 +11,27 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
+    // Table name
+    const TABLENAME = 'users';
+
+    // Column names
+    const NAME = 'name';
+    const EMAIL = 'email';
+    const PASSWORD = 'password';
+
+    // Fillable fields
+    const FILLABLE = [
+        self::NAME,
+        self::EMAIL,
+        self::PASSWORD,
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
+    // Hidden fields
+    const HIDDEN = [
+        self::PASSWORD,
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    protected $fillable = self::FILLABLE;
+    protected $hidden   = self::HIDDEN;
 }
