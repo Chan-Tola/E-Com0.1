@@ -1,4 +1,7 @@
 @extends('layout.index')
+@section('tittle')
+    Login Page
+@endsection
 @section('login_content')
     <main class="h-[74%] flex justify-center items-center p-6">
         <div class="h-[32rem] w-[28rem] rounded-2xl bg-white shadow-lg">
@@ -43,4 +46,31 @@
             </div>
         </div>
     </main>
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+
+        @if (session('success'))
+            Toast.fire({
+                icon: "success",
+                title: "{{ session('success') }}"
+            });
+        @endif
+
+        @if (session('error'))
+            Toast.fire({
+                icon: "error",
+                title: "{{ session('error') }}"
+            });
+        @endif
+    </script>
 @endsection

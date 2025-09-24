@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ListingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
@@ -23,4 +26,11 @@ Route::controller(PageController::class)->group(function () {
     //note: about page
     Route::get('/about', 'about')->name('about');
     Route::get('/user', 'user')->name('user');
+});
+
+
+Route::prefix('admin')->group(function () {
+    Route::get('dasboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('category', [CategoryController::class, 'index'])->name('admin.category');
+    Route::get('listing', [ListingController::class, 'index'])->name('admin.listing');
 });

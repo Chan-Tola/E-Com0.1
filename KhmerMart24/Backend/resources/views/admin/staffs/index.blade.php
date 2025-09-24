@@ -4,7 +4,7 @@
 @endsection
 @section('user_content')
     <main class="h-[74%] flex justify-center p-6">
-        <section class="w-[90%] rounded-2xl     ">
+        <section class="w-[90%] rounded-2xl">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

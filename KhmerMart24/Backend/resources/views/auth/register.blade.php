@@ -1,4 +1,7 @@
 @extends('layout.index')
+@section('tittle')
+    Register Page
+@endsection
 @section('register_content')
     <main class="h-[74%] flex justify-center items-center p-6">
         <div class="h-[43rem] w-[28rem] rounded-2xl bg-white shadow-lg">

@@ -1,4 +1,7 @@
 @extends('layout.index')
+@section('tittle')
+    HomePage
+@endsection
 @section('home_content')
     <main class="flex items-center h-[74%] justify-center p-6">
         <section class="bg-white p-10 rounded-2xl shadow-xl text-center max-w-xl">

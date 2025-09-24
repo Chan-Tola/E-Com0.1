@@ -19,7 +19,7 @@ class AuthController extends Controller
         $credentials = $request->only(User::EMAIL, User::PASSWORD);
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/');
+            return redirect()->back()->with('success', 'Login Success');
         }
 
         return back()->withErrors(['email' => 'Invalid credentials']);
@@ -33,25 +33,25 @@ class AuthController extends Controller
     {
         // Validate inputs
         $validated = $request->validate([
-            User::NAME => 'required|string|max:255',
+            User::USERNAME => 'required|string|max:255',
             User::EMAIL => 'required|email|unique:' . User::TABLENAME . ',' . User::EMAIL,
             User::PASSWORD => 'required|string|min:5|confirmed', // requires password_confirmation
         ]);
 
         // Create user using constants and hash password
         $user = User::create([
-            User::NAME => $validated[User::NAME],
+            User::USERNAME => $validated[User::USERNAME],
             User::EMAIL => $validated[User::EMAIL],
             User::PASSWORD => bcrypt($validated[User::PASSWORD]),
         ]);
 
         Auth::login($user);
-        return redirect('/')->with('success', 'Account registered successfully!');
+        return redirect()->back()->with('success', 'Account registered successfully!');
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect('/')->with('success', 'Account registered successfully!');
+        return redirect()->back()->with('success', 'Account registered successfully!');
     }
 }
