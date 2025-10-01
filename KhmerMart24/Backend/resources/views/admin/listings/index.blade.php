@@ -11,7 +11,7 @@
                     <button @click = " activeTap = 'relations'"
                         :class="{ 'border-blue-500 text-blue-600': activeTap === 'relations', 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300': activeTap !== 'relations' }"
                         class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-                        User & Category Relations
+                        Category Products
                     </button>
                     <button @click = " activeTap = 'details'"
                         :class="{ 'border-blue-500 text-blue-600': activeTap === 'details', 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300': activeTap !== 'details' }"
@@ -20,7 +20,8 @@
                     </button>
                 </section>
                 {{-- note: dont forget to do dynamic button add new --}}
-                <button type="button"
+                <button type="button" data-action="show" data-modal-url="{{ route('listing.create') }}"
+                    data-title="Create Product" :data-type="activeTab"
                     class="me-2 mb-2 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 focus:outline-none dark:border-gray-600 dark:bg-[#11120F] dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">Add
                     new</button>
             </section>
@@ -118,6 +119,10 @@
                     </tbody>
                 </table>
             </div>
+        </section>
+
+        <section>
+            @include('admin.components.modal')
         </section>
     </main>
 

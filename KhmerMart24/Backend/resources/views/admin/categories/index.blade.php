@@ -15,7 +15,7 @@
                         Main Categories
                     </button>
                     <!-- Sub Categories Button -->
-                    <button @click="activeTab = 'sub'"
+                    <button @click = " activeTab = 'sub'"
                         :class="{
                             'border-blue-500 text-blue-600': activeTab === 'sub',
                             'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300': activeTab !== 'sub'
@@ -25,9 +25,11 @@
                     </button>
                 </section>
                 {{-- note: dont forget to do dynamic button add new --}}
-                <button type="button"
-                    class="me-2 mb-2 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 focus:outline-none dark:border-gray-600 dark:bg-[#11120F] dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">Add
-                    new</button>
+                <button type="button" data-action="show" data-modal-url="{{ route('category.create') }}"
+                    data-title="Create Category" :data-type="activeTab"
+                    class="me-2 mb-2 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 focus:outline-none dark:border-gray-600 dark:bg-[#11120F] dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">
+                    Add new
+                </button>
             </section>
         </header>
 
@@ -80,8 +82,13 @@
                                 </th>
                                 {{-- note: button action --}}
                                 <td class="px-6 py-4">
-                                    <button class="font-medium text-blue-600  dark:text-blue-500">Edit</button>
-                                    <button class="font-medium text-red-600  dark:text-red-500 ml-4">Delete</button>
+                                    <button type="button" data-action="show" data-title="Edit Category"
+                                        data-modal-url="{{ route('category.edit', $mainCategory->id) }}"
+                                        class="font-medium text-blue-600  dark:text-blue-500">Edit</button>
+                                    <button type="button" data-action="show" data-title="Deleted" data-type="delete"
+                                        data-item-name="{{ $mainCategory->name }}"
+                                        data-modal-url="{{ route('category.destroy', $mainCategory->id) }}"
+                                        class="font-medium text-red-600  dark:text-red-500 ml-4">Delete</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -138,8 +145,13 @@
                                 </th>
                                 {{-- note: button action --}}
                                 <td class="px-6 py-4">
-                                    <button class="font-medium text-blue-600  dark:text-blue-500">Edit</button>
-                                    <button class="font-medium text-red-600  dark:text-red-500 ml-4">Delete</button>
+                                    <button class="font-medium text-blue-600  dark:text-blue-500" type="button"
+                                        data-action="show" data-title="Edit Category"
+                                        data-modal-url="{{ route('category.edit', $subCategory->id) }}">Edit</button>
+                                    <button type="button" data-action="show" data-title="Deleted" data-type="delete"
+                                        data-item-name="{{ $subCategory->name }}"
+                                        data-modal-url="{{ route('category.destroy', $subCategory->id) }}"
+                                        class="font-medium text-red-600  dark:text-red-500  ml-4">Delete</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -148,5 +160,10 @@
                 </table>
             </div>
         </section>
+
+        <section>
+            @include('admin.components.modal')
+        </section>
     </main>
+
 @endsection

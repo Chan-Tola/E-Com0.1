@@ -13,7 +13,7 @@
             <button class="w-7 h-7 flex items-center justify-center">
                 <i class='bx bx-cog text-xl'></i>
             </button>
-            <button @click="dark = !dark"
+            <button @click="toggleTheme()"
                 class="w-7 h-7 flex items-center justify-center rounded-lg text-lg font-medium dark:text-white">
                 <i class='bx bx-moon text-xl' x-show="!dark"></i>
                 <i class='bx bx-sun text-xl' x-show="dark"></i>

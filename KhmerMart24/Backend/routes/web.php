@@ -30,7 +30,7 @@ Route::controller(PageController::class)->group(function () {
 
 
 Route::prefix('admin')->group(function () {
-    Route::get('dasboard', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('category', [CategoryController::class, 'index'])->name('admin.category');
-    Route::get('listing', [ListingController::class, 'index'])->name('admin.listing');
+    Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::resource('category', CategoryController::class);
+    Route::resource('listing', ListingController::class);
 });
